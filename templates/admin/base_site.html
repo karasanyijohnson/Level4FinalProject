@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | RWANDAN MUSEUMS{% endblock %}
+
+{% block branding %}
+{#<h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{% static 'admin/img/icon-unknown-alt.svg' %}" width="70px" height="50px">MUSEUM<span style="color: #fff; font-family:sans-serif; margin-right: 10px; margin-left: 10px">BOOKING</span><span style="margin-right: 10px">ADMIN</span>SITE</a></h1>#}
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">MUSEUM<span style="color: #fff; font-family:sans-serif; margin-right: 10px; margin-left: 10px">BOOKING</span><span style="margin-right: 10px">ADMIN</span>SITE</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

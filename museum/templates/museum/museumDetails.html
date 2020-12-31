@@ -1,0 +1,29 @@
+{% include 'navibar/navbar.html' %}
+<div class="container" style="font-family: 'Segoe UI Light'">
+    <div class="row mt-5">
+        <div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ details.title }}</h5>
+              </div>
+              <img src="{{ details.image.url }}" class="card-img-bottom" alt="...">
+            </div>
+        </div>
+    
+        <div class="col-8">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">More about {{details.title}}</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><b>Location: </b>{{ details.location }}</p><br>
+                <p class="card-text">{{ details.description }}</p>
+                <a href="{% url 'book-museum' %}" class="btn btn-primary btn-sm">Book Now</a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="text-muted py-5" style="background-color: #2c3034; margin-top: 67px">
+    {% include 'navibar/footer.html' %}
+</footer>
