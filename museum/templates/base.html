@@ -49,15 +49,18 @@
 
 <header>
  {% include 'navibar/navbar.html' %}
+    {% load static %}
 </header>
 
-<main style="font-family: 'Segoe UI Light'">
+<main style="font-family: 'Segoe UI Light'; background:repeat fixed center url({% static 'images/logo.jpg' %}">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light text-warning">Rwandan Museums</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+  <section class="py-5 text-center container ">
+    <div class="row py-lg-5" >
+      <div class="col-lg-10 col-md-8 mx-auto">
+        <h1 class="fw-light text-warning">Welcome to our Rwandan Museums</h1>
+            <p class="mb-1 text-white">Rwanda is land locked country its economy is based most in tourism, This is museums that you can visit and having fun!</p>
+            <p class="mb-1 text-white">From artefacts dating back to the olden days to contemporary art, Rwanda's museums and galleries make for an interesting<br> insight into that which makes us who we are.</p>
+{#        <p class="lead text-white">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>#}
         <p>
 {#          <a href="#" class="btn btn-primary my-2">Main call to action</a>#}
 {#          <a href="#" class="btn btn-secondary my-2">Secondary action</a>#}
@@ -82,7 +85,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="{% url 'museum-details' data.id %}" class="btn btn-sm btn-outline-success">View Detail</a>
-                     <a href="{% url 'book-museum' %}" class="btn btn-sm ms-3 btn-outline-primary">Book now</a>
+                     <a href="{% url 'book-museum'%}" class="btn btn-sm ms-3 btn-outline-primary">Book now</a>
                 </div>
               </div>
             </div>

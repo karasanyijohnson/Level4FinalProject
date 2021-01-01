@@ -70,6 +70,7 @@ def booking(request):
             return redirect('home')
     else:
         form = BookingForm()
+
     context = {'form': form}
     return render(request, 'museum/booking.html', context)
 

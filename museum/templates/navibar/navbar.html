@@ -18,8 +18,8 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
       </ul>
-        <span class="hello-msg" style="margin-right: 10px">Welcome,</span> <h3 style="color: white">{{ request.user }}</h3>
-        <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+        <span class="hello-msg" style="margin-right: 10px">Welcome!!,{{ request.user}}</span>
+        <a class="navbar-brand text-white" href="{% url 'logout' %}">Logout</a>
     </div>
   </div>
 </nav>
