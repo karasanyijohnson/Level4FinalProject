@@ -1,6 +1,7 @@
 
 
 <!DOCTYPE html>
+{% load static %}
 <html>
 
 <head>
@@ -15,7 +16,9 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #7abecc !important;
+			background: url({% static 'images/bgs_5.jpg' %}) no-repeat ;
+            background-size: cover;
+
 		}
 		.user_card {
 			width: 350px;

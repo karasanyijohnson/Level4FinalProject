@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-{% include 'navibar/navbar.html' %}
+{% include 'navibar/header.html' %}
 
 <style>
     .booking-errors{
@@ -22,7 +22,7 @@
             <p class="text-center booking-errors">{{errors}}
                 <span><a href="{% url 'home' %}" class="check-museums">Check other museums</a></span>
             </p>
-        {% endif %}  
+        {% endif %}
     </div>
     <div class="row mt-5 justify-content-center">
         <div class="col-8">
