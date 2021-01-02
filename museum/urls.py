@@ -7,6 +7,6 @@ urlpatterns = [
     path('logout', logoutUser, name='logout'),
     path('', home, name='home'),
     path('museum-details/<int:pk>', museumDetails, name='museum-details'),
-    path('booking-museum', booking, name='book-museum'),
+    path('booking-museum/<int:mid>', booking, name='book-museum'),
     path('listOfBookings', listOfBookings, name='listOfBookings')
 ]

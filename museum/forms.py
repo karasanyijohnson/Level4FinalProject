@@ -9,10 +9,16 @@ class DateInput(forms.DateInput):
 
 
 class BookingForm(forms.ModelForm):
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'First name'}))
+    lastName = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Last name'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your email'}))
+    phoneNumber = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter Phone number'}))
+    # check_in = forms.CharField(widget=forms.TextInput())
+    # check_out = forms.CharField(widget=forms.TextInput())
+
     class Meta:
         model = Booking
-        fields = '__all__'
-        # fields = ['firstName','lastName', 'email', 'phoneNumber', 'museum',]
+        fields = ('firstName','lastName', 'email', 'phoneNumber','check_in','check_out')
         widgets = {
             'check_in': DateInput(),
             'check_out': DateInput()

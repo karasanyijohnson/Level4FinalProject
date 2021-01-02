@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Museum(models.Model):
@@ -17,12 +18,12 @@ class Museum(models.Model):
     category = models.CharField(max_length=50, choices=MUSEUM_CATEGORIES)
     title = models.CharField(max_length=200)
     description = models.TextField()
+    price = models.IntegerField()
     image = models.ImageField(upload_to='media/museums')
     location = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{dict(self.MUSEUM_CATEGORIES)[self.category]}'
-
+        return self.title
 
 class Booking(models.Model):
     firstName = models.CharField(max_length=255)
@@ -30,8 +31,9 @@ class Booking(models.Model):
     email = models.EmailField()
     phoneNumber = models.CharField(max_length=10)
     museum = models.ForeignKey(Museum, on_delete=models.CASCADE)
+    visitor = models.ForeignKey(User, on_delete=models.CASCADE)
     check_in = models.DateTimeField()
     check_out = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.firstName } has booked {self.museum} from {self.check_in} to {self.check_out}'
+        return self.firstName

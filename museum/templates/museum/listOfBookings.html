@@ -5,27 +5,24 @@
 </header>
 <div class="album py-5 ">
     <div class="container">
-<div class="card mb-3" style="max-width: 740px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="../../../media/adminPhoto/logo.jpg" alt="..." style="width: 100%; height: 100%">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body " style="font-family: 'Segoe UI Light'" >
-        <h5 class="card-title" style="font-family: 'Segoe UI Light'">Card title</h5>
-        <p class="card-text" >
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-
-        </p>
-       <button type="button" class="btn btn-lg btn-primary">Cancel Booking</button>
+      {% for booking in bookings %}
+      <div class="card mb-3" style="max-width: 740px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{booking.museum.image.url}}" alt="..." style="width: 100%; height: 100%">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body " style="font-family: 'Segoe UI Light'" >
+              <h5 class="card-title" style="font-family: 'Segoe UI Light'">{{booking.museum.title}}</h5>
+              <p class="card-text">{{booking.museum.description}}</p>
+            <button type="button" class="btn btn-lg btn-primary">Cancel Booking</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      {% endfor %}
+  
   </div>
-</div>
-</div>
 </div>
 <footer class="text-muted py-5" style="background-color: #2c3034; position: relative" >
     {% include 'navibar/footer.html' %}

@@ -62,18 +62,25 @@ def museumDetails(request, pk):
 
 
 @login_required(login_url='login')
-def booking(request):
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
+def booking(request,mid):
+    museum = Museum.objects.get(id=mid)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                visitor = request.user
+                book = form.save(commit=False)
+                book.visitor = visitor
+                book.museum = museum
+                book.save()
+                return redirect('home')
         form = BookingForm()
-
-    context = {'form': form}
-    return render(request, 'museum/booking.html', context)
-
+    else:
+        return redirect('login')
+    return render(request, 'museum/booking.html', {'form': form})
 
 def listOfBookings(request):
-    return render(request, 'museum/listOfBookings.html')
+    bookings = Booking.objects.filter(visitor=request.user)
+
+    context = {'bookings':bookings}
+    return render(request, 'museum/listOfBookings.html',context)

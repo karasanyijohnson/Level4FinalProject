@@ -85,7 +85,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="{% url 'museum-details' data.id %}" class="btn btn-sm btn-outline-success">View Detail</a>
-                     <a href="{% url 'book-museum'%}" class="btn btn-sm ms-3 btn-outline-primary">Book now</a>
+                     <a href="{% url 'book-museum' data.id %}" class="btn btn-sm ms-3 btn-outline-primary">Book now</a>
                 </div>
               </div>
             </div>
