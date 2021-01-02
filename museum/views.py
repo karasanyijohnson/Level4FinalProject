@@ -70,15 +70,10 @@ def booking(request,mid):
             if form.is_valid():
                 visitor = request.user
                 checkin = form.cleaned_data.get('check_in')
-                ckeckout = form.cleaned_data.get('check_out')
-
-                case_1 = Booking.objects.filter(museum=museum, check_in__lte=checkin, check_out__gte=checkin).exists()
-                case_2 = Booking.objects.filter(museum=museum, check_in__lte=ckeckout, check_out__gte=ckeckout).exists()
-                case_3 = Booking.objects.filter(museum=museum, check_in__gte=checkin, check_out__lte=ckeckout).exists()
-
-                if case_1 or case_2 or case_3:
-                    return render(request, 'museum/booking.html', {'form': form,'errors':'This museum is not available on your selected dates'})
-                
+                checkout = form.cleaned_data.get('check_out')
+                case_1 = Booking.objects.filter(museum=museum, visitor=visitor, check_in=checkin, check_out=checkout).exists()
+                if case_1:
+                    return render(request, 'museum/booking.html', {'form': form,'errors':'This museum can not be booked twice'})
                 book = form.save(commit=False)
                 book.visitor = visitor
                 book.museum = museum
@@ -101,3 +96,4 @@ def cancelBooking(request,pk):
         return redirect('listOfBookings')
     return render(request, 'museum/cancelBooking.html', {'booking':booking})
 
+             
