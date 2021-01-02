@@ -1,7 +1,29 @@
 {% load crispy_forms_tags %}
 {% include 'navibar/navbar.html' %}
 
+<style>
+    .booking-errors{
+        padding: 15px;
+        background: #e45e5e;
+        color: white;
+        border-radius: 25px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+    .check-museums{
+        color: darkblue;
+        margin-left: 8px;
+    }
+</style>
+
  <div class="container">
+    <div class="col-lg-8 mx-auto">
+        {% if errors %}
+            <p class="text-center booking-errors">{{errors}}
+                <span><a href="{% url 'home' %}" class="check-museums">Check other museums</a></span>
+            </p>
+        {% endif %}  
+    </div>
     <div class="row mt-5 justify-content-center">
         <div class="col-8">
             <div class="card">

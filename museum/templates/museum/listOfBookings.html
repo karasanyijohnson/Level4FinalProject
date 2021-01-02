@@ -15,7 +15,7 @@
             <div class="card-body " style="font-family: 'Segoe UI Light'" >
               <h5 class="card-title" style="font-family: 'Segoe UI Light'">{{booking.museum.title}}</h5>
               <p class="card-text">{{booking.museum.description}}</p>
-            <button type="button" class="btn btn-lg btn-primary">Cancel Booking</button>
+              <a href="{% url 'cancelBooking' booking.id %}"><button type="button" class="btn btn-lg btn-primary">Cancel Booking</button></a>
             </div>
           </div>
         </div>
