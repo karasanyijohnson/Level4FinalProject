@@ -8,10 +8,11 @@ urlpatterns = [
     # path('', home, name='home'),
     # path('museum-details/<int:pk>', museumDetails, name='museum-details'),
     # path('booking-museum/<int:mid>', booking, name='book-museum'),
-    path('listOfBookings', listOfBookings, name='listOfBookings'),
+    # path('listOfBookings', listOfBookings, name='listOfBookings'),
     path('cancel/booking/<int:pk>', cancelBooking, name='cancelBooking'),
     path('', Museums, name='museums'),
     path('museum_lists', MuseumList, name='museum_lists'),
     path('museum-detail/<int:pk>', Museum_Detail, name='museum-detail'),
-    path('booking/<int:mid>', booking, name ='booking')
+    path('booking/<int:mid>', booking, name='booking'),
+    path('yourBookings', yourBookings, name='yourBookings')
 ]

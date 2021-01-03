@@ -28,12 +28,12 @@
 {% include 'navibar/header.html' %}
  <!-- END nav -->
  
- <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../static/images/bg_1.jpg');">
+ <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../static/images/bgs_5.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center">
-       <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Book <i class="fa fa-chevron-right"></i></span></p>
+       <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'museum_lists' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Book <i class="fa fa-chevron-right"></i></span></p>
        <h1 class="mb-0 bread">Book with us</h1>
      </div>
    </div>
@@ -45,7 +45,7 @@
        <div class="col-lg-8 mx-auto">
         {% if errors %}
             <p class="text-center booking-errors">{{errors}}
-                <span><a href="{% url 'museum-detail' %}" class="check-museums">Check other museums</a></span>
+                <span><a href="{% url 'booking' %}" class="check-museums">Check other museums</a></span>
             </p>
         {% endif %}
     </div>
@@ -79,8 +79,8 @@
         
       </div>
 
-      <div class="col-md-6 d-flex" style="background: url({{ details.image.url }})">
-       <div  class="bg-white"></div>
+      <div class="col-md-6 d-flex" style="background: url('../../static/images/bgs_5.jpg') no-repeat; background-size: cover">
+       <div  class="bg-white" ></div>
      </div>
    </div>
  </div>

@@ -66,24 +66,24 @@ def booking(request, mid):
                 book.visitor = visitor
                 book.museum = museum
                 book.save()
-                return redirect('museum_lists')
+                return redirect('yourBookings')
         form = BookingForm()
     else:
         return redirect('museum_lists')
-    return render(request, 'Museums/toBook.html', {'form': form})
+    return render(request, 'Museums/toBook.html', {'form': form}, )
 
 
-def listOfBookings(request):
-    bookings = Booking.objects.filter(visitor=request.user)
-    return render(request, 'museum/listOfBookings.html', {'bookings': bookings})
+# def listOfBookings(request):
+#     bookings = Booking.objects.filter(visitor=request.user)
+#     return render(request, 'museum/listOfBookings.html', {'bookings': bookings})
 
 
 def cancelBooking(request, pk):
     booking = get_object_or_404(Booking, id=pk)
     if request.method == 'POST':
         booking.delete()
-        return redirect('listOfBookings')
-    return render(request, 'museum/cancelBooking.html', {'booking': booking})
+        return redirect('yourBookings')
+    return render(request, 'Museums/cancelYourBooking.html', {'booking': booking})
 
 
 def Museums(request):
@@ -102,3 +102,8 @@ def Museum_Detail(request, pk):
     details = Museum.objects.get(id=pk)
     context = {'details': details}
     return render(request, 'Museums/MuseumDetail.html', context)
+
+
+def yourBookings(request):
+    bookings = Booking.objects.filter(visitor=request.user)
+    return render(request, 'Museums/yourBookings.html', {'bookings': bookings})

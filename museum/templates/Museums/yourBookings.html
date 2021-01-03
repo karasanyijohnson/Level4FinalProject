@@ -5,14 +5,14 @@
     <title>Rwandan museums</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../static/css/animate.css">
-    
+
     <link rel="stylesheet" href="../../static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../../static/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="../../static/css/magnific-popup.css">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../../static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="../../static/css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="../../static/css/flaticon.css">
     <link rel="stylesheet" href="../../static/css/style.css">
 </head>
@@ -32,11 +32,8 @@
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center">
-            {% if request.user.is_authenticated %}
-          <h1 class="mb-0 bread">Welcome {{ request.user.username}}</h1>
-          {% endif %}
-         <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'museum_lists' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Our museums <i class="fa fa-chevron-right"></i></span></p>
-
+         <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'museum_lists' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Your bookings<i class="fa fa-chevron-right"></i></span></p>
+         <h1 class="mb-0 bread">Your Bookings</h1>
      </div>
  </div>
 </div>
@@ -45,23 +42,22 @@
 <section class="ftco-section">
    <div class="container">
     <div class="row">
-        {% for museum in museums %}
+        {% for booking in bookings %}
        <div class="col-md-4 ftco-animate">
           <div class="project-wrap">
-             <a href="{% url 'museum-detail' museum.id %}" class="img" style="background-image: url({{ museum.image.url }});">
-                <span class="price">{{ museum.price }}.00$/person</span>
-            </a>
+                <h3 style="text-align: center">{{ booking.museum.title}}</h3>
+              <img src="{{ booking.museum.image.url }}" style="width: 100% ; height: 100%">
             <div class="text p-4">
-                <h3><a href="{% url 'museum-detail' museum.id %}">{{ museum.title }}</a></h3>
-                <p class="location"><span class="fa fa-map-marker"></span> Located at,{{ museum.location }}</p>
-                <ul>
-                      <a href="{% url 'museum-detail' museum.id %}"><button type="button" class="btn btn-primary">Know more</button></a>
-{#                    <li></li>#}
-                     <li></li>
-                  <a href="{% url 'booking' museum.id %}"> <button type="button" class="btn btn-warning">Book now</button></a>
-
-               </ul>
+                <p class="location">{{ booking.museum.description |slice:"100"}}</p>
+                <p><span style="color: #fd7e14; font-size: 20px">Located:</span> {{ booking.museum.location }}</p>
+                <p><span style="color: #fd7e14; font-size: 20px">Price:</span> {{ booking.museum.price }}.00$</p>
+                <p><span style="color: #fd7e14; font-size: 20px">From:</span> {{ booking.check_in }}</p>
+                <p><span style="color: #fd7e14; font-size: 20px">To:</span> {{ booking.check_out }}</p>
+              <div>
+                <a href="{% url 'cancelBooking' booking.id %}"><button type="button" class="btn btn-warning">cancel Booking</button></a>
+            </div>
            </div>
+
        </div>
    </div>
         {% endfor %}
