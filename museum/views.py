@@ -5,6 +5,44 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from .forms import BookingForm, CreateUserForm
+from django.urls import reverse
+
+import stripe
+
+stripe.api_key = "sk_test_51I5d2DHTspjo0zkr50YBLy5BlsmUhUw0vGTYXtLwH6LiFCV5C14E3DYthlfgOBG1a3eBEKIdx5aUmT1vFOxAxisR003i7niHkF"
+
+
+def payment(request, pk):
+    pay = Booking.objects.get(id=pk)
+    context = {'pay': pay}
+    return render(request, 'base/payment.html', context)
+
+
+def charge(request):
+    if request.method == 'POST':
+        print('Data:', request.POST)
+
+        amount = int(request.POST['amount'])
+        customer = stripe.Customer.create(
+            email=request.POST['email'],
+            name=request.POST['nickname'],
+            source=request.POST['stripeToken']
+        )
+
+        charge = stripe.Charge.create(
+            customer=customer,
+            amount=amount * 100,
+            currency='usd',
+            description="Booking museum"
+
+        )
+
+    return redirect(reverse('success', args=[amount]))
+
+
+def successMsg(request, args):
+    amount = args
+    return render(request, 'base/success.html', {'amount': amount})
 
 
 def registerPage(request):
@@ -66,16 +104,12 @@ def booking(request, mid):
                 book.visitor = visitor
                 book.museum = museum
                 book.save()
+                messages.success(request, 'Make payment before 2days otherwise your booking will be cancelled')
                 return redirect('yourBookings')
         form = BookingForm()
     else:
         return redirect('museum_lists')
     return render(request, 'Museums/toBook.html', {'form': form}, )
-
-
-# def listOfBookings(request):
-#     bookings = Booking.objects.filter(visitor=request.user)
-#     return render(request, 'museum/listOfBookings.html', {'bookings': bookings})
 
 
 def cancelBooking(request, pk):

@@ -55,6 +55,7 @@
                 <p><span style="color: #fd7e14; font-size: 20px">To:</span> {{ booking.check_out }}</p>
               <div>
                 <a href="{% url 'cancelBooking' booking.id %}"><button type="button" class="btn btn-warning">cancel Booking</button></a>
+                  <a href="{% url 'payment' booking.id %}"><button type="button" class="btn btn-success"> pay</button></a>
             </div>
            </div>
 

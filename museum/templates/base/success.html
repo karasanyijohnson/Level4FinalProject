@@ -1,0 +1,12 @@
+{% extends 'base/template.html' %}
+{% load static %}
+{% block content %}
+	<div id="box">
+		<img id="succes-icon" src="{% static 'images/check.png' %}">
+		<h4>Thank you for your payment of ${{amount}} </h4>
+		<p>You should receive a receipt to the email you provided shortly </p>
+
+		<h1>Thank you so much <span style="color: #fd7e14">{{ request.user.username }}</span>!!</h1>
+	</div>
+
+{% endblock content %}

@@ -14,5 +14,9 @@ urlpatterns = [
     path('museum_lists', MuseumList, name='museum_lists'),
     path('museum-detail/<int:pk>', Museum_Detail, name='museum-detail'),
     path('booking/<int:mid>', booking, name='booking'),
-    path('yourBookings', yourBookings, name='yourBookings')
+    path('yourBookings', yourBookings, name='yourBookings'),
+    path('payment/<int:pk>', payment, name="payment"),
+    path('charge/', charge, name="charge"),
+    path('success/<str:args>/', successMsg, name="success"),
+
 ]
