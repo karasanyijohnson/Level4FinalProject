@@ -106,11 +106,17 @@ def booking(request, mid):
                 book.visitor = visitor
                 book.museum = museum
                 book.save()
-                return redirect('yourBookings')
+                messages.success(request,'you have successfully booked, pay before 2 days otherwise it will be cancel,')
+                return redirect('book_msg')
         form = BookingForm()
     else:
         return redirect('museum_lists')
     return render(request, 'Museums/toBook.html', {'form': form}, )
+
+
+def successMsgBook(request, args):
+    amount = args
+    return render(request, 'Museums/messageAfterBooking.html', {'amount': amount})
 
 
 @login_required(login_url='login')
@@ -119,7 +125,7 @@ def cancelBooking(request, pk):
     if request.method == 'POST':
         booking.delete()
         return redirect('yourBookings')
-    return render(request, 'Museums/cancelYourBooking.html', {'booking': booking})
+    return render(request, 'museum/cancelBooking.html', {'booking': booking})
 
 
 def Museums(request):
