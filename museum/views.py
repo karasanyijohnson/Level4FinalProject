@@ -106,12 +106,19 @@ def booking(request, mid):
                 book.visitor = visitor
                 book.museum = museum
                 book.save()
-                messages.success(request,'you have successfully booked, pay before 2 days otherwise it will be cancel,')
-                return redirect('book_msg')
+                messages.success(request,'You have successfully booked the museum, Pay before 2 days otherwise it will be canceled,')
+                return redirect('messageBooking')
         form = BookingForm()
     else:
         return redirect('museum_lists')
     return render(request, 'Museums/toBook.html', {'form': form}, )
+
+
+ 
+
+def messageBooking(request):
+    return render(request, 'Museums/messageAfterBooking.html')
+
 
 
 def successMsgBook(request, args):

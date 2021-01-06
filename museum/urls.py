@@ -19,4 +19,7 @@ urlpatterns = [
     path('charge/', charge, name="charge"),
     path('success/<str:args>/', successMsg, name="success"),
 
+    path('message-aft-booking/', messageBooking, name="messageBooking"),
+
+
 ]

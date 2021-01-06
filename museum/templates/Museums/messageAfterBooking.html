@@ -5,7 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<p> Message after booking
-</p>
+    <p> 
+         {% for message in messages %}
+           <div class="overdue container booking-notification">
+                <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+                {{ message }}
+                </div>
+            </div>
+           {% endfor %}
+    </p>
+    <p><a href="{% url 'yourBookings' %}">Review your  bookings</a></p>
 </body>
 </html>
