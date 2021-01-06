@@ -1,19 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p> 
-         {% for message in messages %}
-           <div class="overdue container booking-notification">
-                <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
-                {{ message }}
-                </div>
-            </div>
-           {% endfor %}
-    </p>
-    <p><a href="{% url 'yourBookings' %}">Review your  bookings</a></p>
-</body>
-</html>
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#    <p> #}
+{#         {% for message in messages %}#}
+{#           <div class="overdue container booking-notification">#}
+{#                <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">#}
+{#                {{ message }}#}
+{#                </div>#}
+{#            </div>#}
+{#           {% endfor %}#}
+{#    </p>#}
+{#    <p><a href="{% url 'yourBookings' %}">Review your  bookings</a></p>#}
+{#</body>#}
+{#</html>#}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+{#<header>#}
+{#    {% include 'navibar/header.html' %}#}
+{#</header>#}
+<style>
+    .booking-details{
+        border: 1px solid black;
+        padding: 18px;
+        margin-bottom: 38px;
+    }
+</style>
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-8 mx-auto">
+                        <form method="post" action="">
+                            {% csrf_token %}
+                                <div class="row mg-l-100">
+                                    <div class="col-lg-5 mx-auto">
+                                        <div class="row">
+                                            <div class="col-md-12 mx-auto">
+                                                <div class="booking-details mt-5" style="justify-content: center">
+                                                    <p>
+                                     {% for message in messages %}
+                                       <div class="overdue container booking-notification">
+                                            <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+                                            {{ message }}
+                                            </div>
+                                        </div>
+                                       {% endfor %}
+                                    </p>
+                           <div style="justify-content: center">
+                                <a href="{% url 'yourBookings' %}"><button type="button" class="btn btn-warning"> Go Back to your bookings</button></a>
+
+                           </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#<footer class="text-muted py-5" style="background-color: #2c3034; position: relative" >#}
+{#    {% include 'navibar/footer.html' %}#}
+{#</footer >#}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
